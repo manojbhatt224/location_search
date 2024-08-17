@@ -4,9 +4,10 @@ const fs = require('fs');
 const csv = require('csv-parser');
 const serverless = require('serverless-http');
 const app = express();
+const path = require('path');
 
 // Path to the CSV file
-const csvFilePath = 'output.csv';
+const csvFilePath = path.join(__dirname, 'output.csv');
 
 // Load CSV data into memory
 let placesData = [];
@@ -30,5 +31,5 @@ app.get('/search', (req, res) => {
   res.json(results);
 });
 
-// Export the handler for Netlify Functions
+// Export the handler for Netlify Funyctions
 module.exports.handler = serverless(app);
